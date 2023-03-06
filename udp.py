@@ -49,7 +49,7 @@ class Udp:
         while self.status:
             try:
                 data = gzip.compress(self.play.recording_stream.read(1024)).hex()  # 取实时音频流 并将 bytes 转 16进制
-                data = '{"toId":'+self.to_id+',"data":"' + data + '","type":"call","token": "'+self.token+'"}'
+                data = '{"toId":'+self.to_id+',"data":"' + data + '","type":"call"}'
                 self.client.sendto(data.encode('utf-8'), (self.host, self.port))
             except Exception as e:
                 print("audio send", e)
