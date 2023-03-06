@@ -28,6 +28,11 @@
 .app.ini
 ```
 
+#### 登录
+```text
+在 main.py 中配置登录的邮箱和密码
+```
+
 #### 运行
 ```shell script
 python main.py
