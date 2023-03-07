@@ -5,7 +5,7 @@ class Audio:
     chunk_size = 1024  # 512
     audio_format = pyaudio.paInt16  # 采样位数
     channels = 1  # 通道
-    rate = 20000  # 采样率
+    rate = 16000  # 采样率
 
     # 初始化
     def new(self):

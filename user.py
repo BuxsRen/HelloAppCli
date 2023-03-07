@@ -3,7 +3,7 @@ import request
 import udp
 import ws
 import time
-
+import config
 
 class User:
     ws_client = None
@@ -17,16 +17,16 @@ class User:
     list = {}
     socket = None
 
-    def __init__(self,username,password):
-        self.username = username
-        self.password = password
+    def __init__(self):
+        self.username = config.Conf.get_config("user","username")
+        self.password = config.Conf.get_config("user","password")
         self.req = request.Request()
 
     def login(self):
         res = self.req.post("/api/login",{"username": self.username,"password": self.password})
         if res["code"] == 200:
-            print("√",res["msg"])
             data = res["data"]
+            print("√", res["msg"], "当前登录用户：", data["nickname"])
             self.id = data["id"]
             self.token = data["token"]
             self.nickname = data["nickname"]
@@ -49,14 +49,14 @@ class User:
             if data["from"] == self.id:
                 return
             else:
-                print("用户[%s]上线了" % data["from"])
+                print("用户[%s]上线了" % self.list[data["from"]]["nickname"])
             return
 
         if data["type"] == "logout":
             if data["from"] == self.id:
                 print(data["data"])
             else:
-                print("用户[%s]离线了" % data["from"])
+                print("用户[%s]离线了" % self.list[data["from"]]["nickname"])
             return
 
         if data["type"] == "list":
