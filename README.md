@@ -5,7 +5,7 @@
 > https://github.com/BuxsRen/Hello
 >
 
-> 安卓客户端端
+> 安卓客户端
 >
 > https://github.com/BuxsRen/HelloApp
 
