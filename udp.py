@@ -9,7 +9,7 @@ import gzip
 class Udp:
     play = None
     client = None
-    buf_size = 1024  # socket字节
+    buf_size = 10240  # socket字节
     token = ""
     to_id = ""
     status = False
